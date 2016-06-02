@@ -1,16 +1,25 @@
 ﻿@model IEnumerable<PrimeiraAPP_MVC4.Models.UsuarioModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Hexball";
 }
 
-<h2>Index</h2>
+<br />
+@{ 
+    
+}
+<div class="alert alert-success" role="alert">Usuário inserido com sucesso</div>
+
+<h2>Listagem de Usuários</h2>
 
 <p>
     @Html.ActionLink("Criar Usuário", "AdicionaUsuario")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.nome)
         </th>
@@ -32,6 +41,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.id)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.nome)
         </td>
         <td>
@@ -47,9 +59,8 @@
             @Html.DisplayFor(modelItem => item.nascimento)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Alterar", "AlteraUsuario", new { id=item.id }) |
+            @Html.ActionLink("Apagar", "ExcluiUsuario", new { id = item.id })
         </td>
     </tr>
 }

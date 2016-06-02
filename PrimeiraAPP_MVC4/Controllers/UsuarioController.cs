@@ -30,16 +30,30 @@ namespace PrimeiraAPP_MVC4.Controllers
             _usuarios.CriaUsuario(_usuarioModel);
             return View();
         }
-        public ViewResult DeletaUsuario(string id)
+
+        public ActionResult AlteraUsuario(int id)
+        {
+            View(_usuarios.GetUsuario(id));
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AlteraUsuario(UsuarioModel _usuarioModel)
+        {
+            _usuarios.AlteraUsuario(_usuarioModel);
+            return Index();
+        }
+
+        public ViewResult ExcluiUsuario(int id)
         {
             return View(_usuarios.GetUsuario(id));
 
         }
 
         [HttpPost]
-        public RedirectToRouteResult DeletaUsuario(string id, FormCollection collection)
+        public ActionResult ExcluiUsuario(UsuarioModel _usuarioModel)
         {
-            _usuarios.DeletarUsuario(id);
+            _usuarios.DeletarUsuario(_usuarioModel);
             return RedirectToAction("Index");
         }
     }

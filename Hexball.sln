@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexball", "PrimeiraAPP_MVC4\Hexball.csproj", "{8BCB8772-741B-40D2-8F13-6A7D7DE87532}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeiraAPP_MVC4", "PrimeiraAPP_MVC4\PrimeiraAPP_MVC4.csproj", "{8BCB8772-741B-40D2-8F13-6A7D7DE87532}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

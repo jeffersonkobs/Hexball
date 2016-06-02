@@ -14,14 +14,17 @@ namespace PrimeiraAPP_MVC4.Models
         //private String stringconnection1 = “server=seusite.com.br;User Id = seuid; password=suasenha;database=seubanconoservidordehospedagem”;
 
         //string mysql rodando na maquina do desenvolvedor.
-        private String stringconnection2 = "server=localhost;User Id=admin; password=admin;database=projetoteste";
+        private String stringconnection2 = "server=localhost;User Id=admin; password='';database=hexball";
 
+        #region metodos que tentam abrir conexao com projeto rodando local ou hospedado
         public void tentarAbrirConexaoLocal()
         {
             objConexao = new MySqlConnection();
             objConexao.ConnectionString = stringconnection2;
-            objConexao.Open();
+            objConexao.Open();            
         }
+
+        #endregion
 
         public ConexaoBancoMySQL()
         {

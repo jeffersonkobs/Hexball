@@ -12,8 +12,9 @@ namespace PrimeiraAPP_MVC4.Models
 
         public Usuario()
         {
-            string CONFIG = ("Persist Security Info=False;server=localhost;database=projetoteste;uid=root;pwd=''");
+            string CONFIG = ("Persist Security Info=False;server=localhost;database=hexball;uid=root;pwd=''");
             MySqlConnection Conexao = new MySqlConnection(CONFIG);
+            //MySqlConnection Conexao = ConexaoBancoMySQL.getConexao();
             MySqlCommand Query = new MySqlCommand();
             Query.Connection = Conexao;
             Query.CommandText = @"SELECT * FROM USUARIOS";
@@ -24,15 +25,22 @@ namespace PrimeiraAPP_MVC4.Models
 
                 UsuarioModel Usuario = new UsuarioModel();//Estancia objeto do tipo usuário
 
+                
+
                 while (dtreader.Read())//Enquanto existir dados no select
                 {
+                    Usuario.id = dtreader.GetInt32("id");
                     Usuario.nome = dtreader["nome"].ToString();
                     Usuario.sobrenome = dtreader["sobrenome"].ToString();
                     Usuario.endereco = dtreader["endereco"].ToString();
                     Usuario.email = dtreader["email"].ToString();
-                    //Usuario.nascimento = Convert.ToDateTime(dtreader["nascimento"].ToString());
+                    Usuario.nascimento = Convert.ToDateTime(dtreader["nascimento"].ToString());
+                    
 
                     listaUsuarios.Add(Usuario);//Adiciona na lista um objeto do tipo cliente
+
+
+                    //dtreader.NextResult();
                 }
                 Conexao.Close();//Fecha Conexao
             }
@@ -44,42 +52,88 @@ namespace PrimeiraAPP_MVC4.Models
         }
         public void CriaUsuario(UsuarioModel usuarioModelo)
         {
-            listaUsuarios.Add(usuarioModelo);
-        }
-
-        public void AtualizaUsuario(UsuarioModel usuarioModelo)
-        {
-            foreach (UsuarioModel usuario in listaUsuarios)
+            string CONFIG = ("Persist Security Info=False;server=localhost;database=hexball;uid=root;pwd=''");
+            MySqlConnection Conexao = new MySqlConnection(CONFIG);
+            MySqlCommand Query = new MySqlCommand();
+            Query.Connection = Conexao;
+            Query.CommandText = @"insert into usuarios(nome, sobrenome, endereco, email, nascimento) 
+                                  values('" + usuarioModelo.nome + "','" + usuarioModelo.sobrenome + "','" + usuarioModelo.endereco + "','" + usuarioModelo.email + "', str_to_date('" + usuarioModelo.nascimento + "','dd/MM/yyyy hh:mm:ss'));";
+            try
             {
-                if (usuario.email == usuarioModelo.email)
-                {
-                    listaUsuarios.Remove(usuario);
-                    listaUsuarios.Add(usuarioModelo);
-                    break;
-                }
+                Conexao.Open();//Abre conexão
+                Query.ExecuteReader();//Crie um objeto do tipo reader para ler os dados do banco
+
+            }
+            catch
+            {
+                Console.WriteLine("Não foi possível validar seu acesso.Tente novamente.");
             }
         }
-        public UsuarioModel GetUsuario(string Email)
-        {
-            UsuarioModel _usuarioModel = null;
 
-            foreach (UsuarioModel _usuario in listaUsuarios)
-                if (_usuario.email == Email)
-                    _usuarioModel = _usuario;
+        public void AlteraUsuario(UsuarioModel usuarioModelo)
+        {
+            string CONFIG = ("Persist Security Info=False;server=localhost;database=hexball;uid=root;pwd=''");
+            MySqlConnection Conexao = new MySqlConnection(CONFIG);
+            MySqlCommand Query = new MySqlCommand();
+            Query.Connection = Conexao;
+            Query.CommandText = @"update usuarios set nome = '" + usuarioModelo.nome + "', sobrenome = '" + usuarioModelo.sobrenome + "', endereco = '" + usuarioModelo.endereco + "', email = '" + usuarioModelo.email + "' where id = " + usuarioModelo.id;
+
+//                                  values('" + usuarioModelo.nome + "','" + usuarioModelo.sobrenome + "','" + usuarioModelo.endereco + "','" + usuarioModelo.email + "', str_to_date('" + usuarioModelo.nascimento + "','dd/MM/yyyy hh:mm:ss'));";
+            try
+            {
+                Conexao.Open();//Abre conexão
+                MySqlDataReader dtreader = Query.ExecuteReader();//Crie um objeto do tipo reader para ler os dados do banco
+
+            }
+            catch
+            {
+                Console.WriteLine("Não foi possível validar seu acesso.Tente novamente.");
+            }
+        }
+        public UsuarioModel GetUsuario(int id)
+        {
+            //UsuarioModel _usuarioModel = null;
+            UsuarioModel _usuarioModel = new UsuarioModel();
+
+            string CONFIG = ("Persist Security Info=False;server=localhost;database=hexball;uid=root;pwd=''");
+            MySqlConnection Conexao = new MySqlConnection(CONFIG);
+            MySqlCommand Query = new MySqlCommand();
+            Query.Connection = Conexao;
+            Query.CommandText = @"SELECT * FROM USUARIOS WHERE ID = " + id;
+
+            Conexao.Open();//Abre conexão
+            MySqlDataReader dtreader = Query.ExecuteReader();
+
+            while (dtreader.Read())//Enquanto existir dados no select
+            {
+                _usuarioModel.id = dtreader.GetInt32("id");
+                _usuarioModel.nome = dtreader["nome"].ToString();
+                _usuarioModel.sobrenome = dtreader["sobrenome"].ToString();
+                _usuarioModel.endereco = dtreader["endereco"].ToString();
+                _usuarioModel.email = dtreader["email"].ToString();
+                _usuarioModel.nascimento = Convert.ToDateTime(dtreader["nascimento"].ToString());
+            }
 
             return _usuarioModel;
         }
 
-        public void DeletarUsuario(String Email)
+        public void DeletarUsuario(UsuarioModel usuarioModelo)
         {
-            foreach (UsuarioModel _usuario in listaUsuarios)
-            {
-                if (_usuario.email == Email)
-                {
-                    listaUsuarios.Remove(_usuario);
+            string CONFIG = ("Persist Security Info=False;server=localhost;database=hexball;uid=root;pwd=''");
+            MySqlConnection Conexao = new MySqlConnection(CONFIG);
+            MySqlCommand Query = new MySqlCommand();
+            Query.Connection = Conexao;
+            Query.CommandText = @"delete from usuarios where id = '" + usuarioModelo.id;
 
-                    break;
-                }
+            try
+            {
+                Conexao.Open();//Abre conexão
+                MySqlDataReader dtreader = Query.ExecuteReader();//Crie um objeto do tipo reader para ler os dados do banco
+
+            }
+            catch
+            {
+                Console.WriteLine("Não foi possível validar seu acesso.Tente novamente.");
             }
         }
     }

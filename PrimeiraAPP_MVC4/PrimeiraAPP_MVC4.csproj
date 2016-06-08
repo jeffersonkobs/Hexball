@@ -198,6 +198,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ExerciciosController.cs" />
+    <Compile Include="Controllers\ExerciciosItemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TreinamentosController.cs" />
@@ -208,6 +209,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ConexaoBancoMySQL.cs" />
     <Compile Include="Models\Exercicios.cs" />
+    <Compile Include="Models\ExerciciosItem.cs" />
+    <Compile Include="Models\ExerciciosItemModels.cs" />
     <Compile Include="Models\ExerciciosModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -283,6 +286,8 @@
     <Content Include="Views\Treinamentos\Index.cshtml" />
     <Content Include="Views\Treinamentos\DetalhesTreinamentos.cshtml" />
     <Content Include="Views\Exercicios\ExerciciosIndex.cshtml" />
+    <Content Include="Views\Exercicios\DetalhesExercicios.cshtml" />
+    <Content Include="Views\ExerciciosItem\ExerciciosItemIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

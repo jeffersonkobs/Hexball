@@ -16,5 +16,10 @@ namespace PrimeiraAPP_MVC4.Controllers
         {
             return View(_exercicios.listaExercicios);
         }
+        public ActionResult DetalhesExercicios(int id)
+        {
+            View(_exercicios.GetExercicios(id));
+            return View();
+        }
     }
 }

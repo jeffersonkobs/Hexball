@@ -4,10 +4,10 @@
     ViewBag.Title = "Hexball";
 }
 
-<h2>Index</h2>
+<h2>Lista de Exercícios do Treinamento</h2>
 
 <p>
-    @Html.ActionLink("Novo Treinamento", "Create")
+    @Html.ActionLink("Novo Exercicio", "Create")
 </p>
 <table class="table">
     <tr>
@@ -54,7 +54,7 @@
         </td>
         <td>
             @Html.ActionLink("Alterar", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.id }) |
+            @Html.ActionLink("Detalhes", "DetalhesExercicios", new { id=item.id }) |
             @Html.ActionLink("Apagar", "Delete", new { id=item.id })
         </td>
     </tr>

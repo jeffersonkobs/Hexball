@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PrimeiraAPP_MVC4.Models.ExerciciosItemModels>
+
+@{
+    ViewBag.Title = "Hexball";
+}
+
+<h2>Lista de Itens do Exercício</h2>
+
+<p>
+    @Html.ActionLink("Novo Item do Exercício", "Create")
+    @Html.ActionLink("Executar Treinamento", "Execute")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.exercicios_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.exercicios_tipo_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.exercicios_tipo_nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lado_lancador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quadrante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sequencia)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.exercicios_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.exercicios_tipo_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.exercicios_tipo_nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lado_lancador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quadrante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sequencia)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

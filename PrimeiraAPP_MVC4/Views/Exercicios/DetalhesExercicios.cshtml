@@ -1,0 +1,66 @@
+﻿@model PrimeiraAPP_MVC4.Models.ExerciciosModels
+
+@{
+    ViewBag.Title = "Hexball";
+}
+
+<h2>Detalhes do Exercicio</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.categoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dificuldade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dificuldade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.repeticoes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.repeticoes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.treinamentos_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.treinamentos_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.treinamentos_nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.treinamentos_nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+@*    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) | *@
+    @Html.ActionLink("Itens do Exercício", "../ExerciciosItem/ExerciciosItemIndex", new { id = Model.id })
+    @Html.ActionLink("Voltar", "Index")
+</p>

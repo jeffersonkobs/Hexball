@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PrimeiraAPP_MVC4.Models;
+using System.IO.Ports;
 
 namespace PrimeiraAPP_MVC4.Controllers
 {
@@ -16,9 +17,9 @@ namespace PrimeiraAPP_MVC4.Controllers
             return View(_exerciciosItem.listaExerciciosItem);
         }
 
-        public ActionResult Execute()
+        /*public ActionResult Execute()
         {
 
-        }
+        }*/
     }
 }

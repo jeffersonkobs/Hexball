@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 
+
 namespace PrimeiraAPP_MVC4.Models
 {
     public class Usuario
